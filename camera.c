@@ -7,7 +7,7 @@ int main(void)
 	const int sWidth = 1080;
 	const int sHeight = 720;
 	InitWindow(sWidth, sHeight, "Camera Example");
-	SetTargetFPS(1000000);
+	SetTargetFPS(60);
 
 	// player setup
 	Rectangle player = {sWidth/2, sHeight/2, 20, 40};
@@ -29,7 +29,8 @@ int main(void)
 
 		cam.target =  (Vector2){player.x, player.y};
 		// mouse zoom with log scaling / smoothing
-		cam.zoom = expf(logf(cam.zoom) + ((float)GetMouseWheelMove()*0.1f));
+		cam.zoom = expf(logf(cam.zoom) + ((float)GetMouseWheelMove()*0.1f)); // prevents cam reversing
+		// cam.zoom = (cam.zoom) + ((float)GetMouseWheelMove()*0.1f);
 
 		BeginDrawing();
 			ClearBackground(RAYWHITE);

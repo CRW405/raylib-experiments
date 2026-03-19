@@ -10,6 +10,7 @@ int main(void) {
 	const int targetfps = 60;
 	SetTargetFPS(targetfps);
 	InitWindow(screenWidth, screenHeight, "Hello World");
+	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 
 	// element setup
 	Vector2 circlePosition = {0, (float)screenHeight/3};
