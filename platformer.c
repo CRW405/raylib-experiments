@@ -50,7 +50,8 @@ int main(void)
 
 	// camera setup
 	Camera2D cam = { 0 };
-	cam.target = player.pos;
+	Vector2 camPos = {-s_width/2, s_height/2};
+	cam.target = camPos;
 	cam.zoom = 1.0f;
 
 	// game loop
@@ -72,6 +73,9 @@ int main(void)
 
 			Rectangle playerRect = {player.pos.x, player.pos.y-40.0f, 40.0f, 40.0f};
 			DrawRectangleRec(playerRect, player.color);
+
+			camPos = (Vector2){player.pos.x - s_width/2, player.pos.y -  s_height/2};
+			cam.target = camPos;
 
 		EndMode2D();
 		EndDrawing();
